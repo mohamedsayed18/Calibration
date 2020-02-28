@@ -1,48 +1,14 @@
 ## Home work2
 
-**Mohamed Ahmed Sayed **
-
 The goal of the task is to identify the compliance parameters for a cylindrical robot
-
-
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/calibration0.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/calibration0.png "image_tooltip")
-
 
 The cylindrical robot consists of three joint RPP here is a schematic showing the joints and the coordinate frames
 
-
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/calibration1.jpg). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/calibration1.jpg "image_tooltip")
-
-
 Let’s first define what is the compliance parameters. It is the property of a material of undergoing elastic deformation or change in volume when subjected to an applied force. It is equal to the reciprocal of stiffness. It can be calculated using this formula
-
-
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/calibration2.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/calibration2.png "image_tooltip")
-
 
 There are two elements in the equation the A matrix and the delta t which is the deflection
 
 Let’s start with the A matrix. The equation of the A matrix is as follow 
-
-
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/calibration3.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/calibration3.png "image_tooltip")
-
 
 So I wrote a simple function which takes the 
 
@@ -90,15 +56,6 @@ def jac_theta(q, param):
 The function takes the configuration and links parameters and then I take the derivative for the transformations from the base to the end effector with respect to every variable which is in our case the joint values. Since the transformations are 4x4 matrices then the output is 4x4 and then to compute J1 we the first three elements in the fourth column and other three elements forming a 6x1 matrix then aggregate this vectors forming the jacobian of size 6x3
 
 To calculate the end effector deflection
-
-
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/calibration4.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/calibration4.png "image_tooltip")
-
-
 
 ```
 def deflection(q,force,param):
